@@ -3691,9 +3691,17 @@ html,body{min-height:100%;} </style><script src="https://www.gstatic.com/firebas
 
   function setupChatkieAuthGate() {
     if (!fbAuth || !isFirebaseConfigured()) {
+      // Keep the public landing screen visible while Firebase is still being configured.
+      // Login, matchmaking and database-backed rooms remain unavailable until real keys are added.
       state.isAuthenticated = false;
-      lockChatkieUntilLogin(true);
-      ckApp.openProfileModal(false, true);
+      lockChatkieUntilLogin(false);
+      const backdrop = document.getElementById('ck-backdrop');
+      const setupModal = document.getElementById('ck-profile-setup-modal');
+      if (backdrop) backdrop.classList.remove('open');
+      if (setupModal) setupModal.classList.remove('open');
+      if (typeof ckShowToast === 'function') {
+        ckShowToast('Firebase setup is pending. The home screen is available; sign-in and chat need Firebase configuration.', 6500);
+      }
       return;
     }
     fbAuth.getRedirectResult().then(result => {
