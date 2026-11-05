@@ -1,0 +1,13 @@
+# Copy this file and rename the copy to .env inside the backend folder.
+# Replace placeholder values with your own Firebase project details.
+# NEVER upload the real .env file or Firebase Admin private key to GitHub.
+
+FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk-xxxxx@YOUR_PROJECT_ID.iam.gserviceaccount.com
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nPASTE_PRIVATE_KEY_HERE\n-----END PRIVATE KEY-----\n"
+FIREBASE_DATABASE_URL=https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com
+FIREBASE_STORAGE_BUCKET=YOUR_PROJECT_ID.firebasestorage.app
+CORS_ORIGINS=http://localhost:3000,https://YOUR-FRONTEND-DOMAIN
+TURN_URLS=
+TURN_USERNAME=
+TURN_CREDENTIAL=
