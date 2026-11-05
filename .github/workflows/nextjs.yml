@@ -1,4 +1,4 @@
-name: Deploy ChatKie
+name: Deploy ChatKie Next.js to GitHub Pages
 
 on:
 push:
@@ -20,7 +20,7 @@ build:
 runs-on: ubuntu-latest
 
 steps:
-  - name: Checkout
+  - name: Checkout repository
     uses: actions/checkout@v4
 
   - name: Setup Node.js
@@ -29,16 +29,14 @@ steps:
       node-version: 20
 
   - name: Install dependencies
-    run: |
-      cd frontend
-      npm install
+    working-directory: frontend
+    run: npm install
 
   - name: Build Next.js
-    run: |
-      cd frontend
-      npm run build
+    working-directory: frontend
+    run: npm run build
 
-  - name: Upload Pages Artifact
+  - name: Upload GitHub Pages artifact
     uses: actions/upload-pages-artifact@v3
     with:
       path: frontend/out
@@ -49,9 +47,10 @@ name: github-pages
 url: ${{ steps.deployment.outputs.page_url }}
 
 runs-on: ubuntu-latest
+
 needs: build
 
 steps:
-  - name: Deploy
+  - name: Deploy to GitHub Pages
     id: deployment
     uses: actions/deploy-pages@v4
