@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-output: 'export',
-trailingSlash: true,
-images: {
-unoptimized: true,
-},
-basePath: '/Chatkie-Web-App',
+  output: 'export',
+  trailingSlash: true,
+  basePath: '/Chatkie-Web-App',
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
